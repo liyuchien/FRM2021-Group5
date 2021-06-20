@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[2]:
-
-
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -106,8 +103,8 @@ sign_in_link.click()
 username = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, 'username')))
 password = WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.ID, 'password')))
 
-user1 = os.environ.get("USER","eagalsl@gmail.com")
-pass1 = os.environ.get("PASS","s106071032") 
+user1 = os.environ.get("USER", USER)
+pass1 = os.environ.get("PASS", PASS) 
 
 soup = BeautifulSoup(driver.page_source, 'lxml')
 
@@ -122,14 +119,13 @@ time.sleep(2)
 print('Successfully log in.')
 
 ################ USER's INPUT #################
-
 dates = time_period('20140410','20140411')
-
-save_path = r'D:'
-
+save_path = INPUT_YOUR_PATH_HERE
+USER = YOUR_USERNAME
+PASS = YOUR_PASSWORD
 ###############################################
 
-file = os.path.join(save_path,'WSJ_articles_missing.xlsx')
+file = os.path.join(save_path,'WSJ_articles.xlsx')
 
 for date in dates:
     
@@ -150,4 +146,3 @@ for date in dates:
 driver.close()
 
 print('END')
-
